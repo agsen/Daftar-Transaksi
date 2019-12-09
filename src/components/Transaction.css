@@ -1,0 +1,49 @@
+.container-item{
+    background-color: white;
+    margin: 16px 0;
+    border-radius: 16px;
+    display: flex;
+
+}
+
+.container-text{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+h1{
+    font-size: 24px;
+    color: #1E1E1E;
+}
+
+p{
+    font-size: 20px;
+    color: #1E1E1E;
+}
+
+.left-border{
+    width: 10px;
+    height: 150px;
+    border-radius: 16px 0 0 16px;
+}
+
+.text-status{
+    padding: 12px;
+    color:white;
+    border-radius: 8px;
+}
+
+.success{
+    background-color: #58B586;
+}
+
+.pending{
+    background-color: rgb(233, 214, 41);
+}
+
+.error{
+    background-color: rgb(216, 83, 83);
+}
