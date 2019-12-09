@@ -30,10 +30,10 @@ class Transaction extends Component {
                 </div>
                 <div className="container-text">
                     <div>
-                        <h1>{`${this.formatTextBank(item.sender_bank)}`} < i class="fas fa-arrow-right"></i>{` ${this.formatTextBank(item.beneficiary_bank)}`}</h1>
+                        <h1>{`${this.formatTextBank(item.sender_bank)}`} < i className="fas fa-arrow-right"></i>{` ${this.formatTextBank(item.beneficiary_bank)}`}</h1>
                         <p>{item.beneficiary_name}</p>
                         <p>{`Rp${item.amount.toLocaleString().replace(/,/g, '.')} `}
-                            <i class="fas fa-circle" style={{ fontSize: "8px" }}></i>
+                            <i className="fas fa-circle" style={{ fontSize: "8px" }}></i>
                             {` ${moment(item.completed_at.split(" ")[0]).format("DD MMMM YYYY")}`}</p>
                     </div>
                     <div>

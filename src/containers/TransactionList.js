@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './TransactionList.css';
 import Transaction from '../components/Transaction';
 
+//karena kendala cors maka data transaksi disimpan di list.js
+import { transactionsData } from '../list.js'
+
+
 
 class TransactionList extends Component {
     state = {
@@ -16,17 +20,22 @@ class TransactionList extends Component {
 
 
     async componentDidMount() {
+        let result = [];
         const response = await fetch("https://nextar.flip.id/frontend-test")
+            .catch(() => {
+                result = Object.keys(transactionsData).map(function (key) {
+                    return [transactionsData[key]];
+                });
+            })
 
         if (response) {
             const json = await response.json();
-            var result = Object.keys(json).map(function (key) {
+            result = Object.keys(json).map(function (key) {
                 return [json[key]];
             });
-            this.setState({ transactions: result });
         }
 
-
+        this.setState({ transactions: result });
     }
 
     renderTransaction = () => {
@@ -38,9 +47,8 @@ class TransactionList extends Component {
             }
 
             if (filtered.length > 0) {
-                return filtered.map((item) => {
-                    console.log(item[0])
-                    return <Transaction item={item[0]} />
+                return filtered.map((item, i) => {
+                    return <Transaction item={item[0]} key={i} />
                 })
             } else {
                 return <p style={{ textAlign: "center", margin: "24px" }}>Transaksi tidak ditemukan</p>
@@ -55,7 +63,7 @@ class TransactionList extends Component {
         return (
             <div>
                 <div className="container-search">
-                    <i class="search-icon fas fa-search"></i>
+                    <i className="search-icon fas fa-search"></i>
                     <input
                         placeholder={"Cari nama"}
                         value={searchText}
